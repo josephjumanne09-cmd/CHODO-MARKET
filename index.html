@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chodo Market Express | China to Tanzania Sourcing & Shipping</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Top Announcement Bar -->
+    <div class="top-bar">
+        <div class="container flex-between">
+            <span>🇨🇳 China ➔ 🇹🇿 Tanzania | Direct WhatsApp Sourcing & Express Shipping</span>
+            <div class="top-contacts">
+                <a href="tel:+255698039513"><i class="fa-solid fa-phone"></i> +255 698 039 513</a>
+                <a href="tel:+255748911984"><i class="fa-solid fa-phone"></i> +255 748 911 984</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="navbar">
+        <div class="container flex-between">
+            <div class="logo" onclick="switchPage('home')">
+                <h1>CHODO <span class="highlight">MARKET</span></h1>
+                <p>Express China Sourcing</p>
+            </div>
+            <nav class="nav-links">
+                <button onclick="switchPage('home')" class="nav-btn active" data-target="home">Home</button>
+                <button onclick="switchPage('sourcing')" class="nav-btn" data-target="sourcing">Order / Sourcing</button>
+                <button onclick="switchPage('calculator')" class="nav-btn" data-target="calculator">Shipping Calculator</button>
+                <button onclick="switchPage('tracking')" class="nav-btn" data-target="tracking">Track Order</button>
+                <button onclick="switchPage('services')" class="nav-btn" data-target="services">Services</button>
+                <button onclick="switchPage('catalog')" class="nav-btn" data-target="catalog">Categories</button>
+            </nav>
+            <div class="header-cta">
+                <a href="https://wa.me/255698039513" target="_blank" class="whatsapp-btn-header">
+                    <i class="fa-brands fa-whatsapp"></i> Chat Now
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- PAGE CONTAINER -->
+    <main class="main-content">
+
+        <!-- HOME PAGE -->
+        <section id="page-home" class="page active-page">
+            <div class="hero-section">
+                <div class="container hero-grid">
+                    <div class="hero-text">
+                        <span class="badge">YOU CHOOSE, WE PURCHASE, WE SHIP, YOU RECEIVE!</span>
+                        <h2>Let Us Handle The Stress, You Grow Your Business!</h2>
+                        <p>We source top-quality products from China at fair prices, inspect them carefully, and ship them securely straight to Tanzania via elite Air and Sea cargo channels.</p>
+                        <div class="hero-buttons">
+                            <button class="btn-primary" onclick="switchPage('sourcing')">Submit Order Request</button>
+                            <button class="btn-secondary" onclick="switchPage('calculator')">Calculate Shipping Cost</button>
+                        </div>
+                        <div class="trust-badges">
+                            <div><i class="fa-solid fa-shield-halved"></i> Safe & Secure</div>
+                            <div><i class="fa-solid fa-bolt"></i> Fast 5-10 Days Air</div>
+                            <div><i class="fa-solid fa-box-archive"></i> Reliable Sea Cargo</div>
+                        </div>
+                    </div>
+                    <div class="hero-card">
+                        <div class="quick-quote-box">
+                            <h3><i class="fa-solid fa-calculator"></i> Quick Order Starter</h3>
+                            <p>Ready to buy from Alibaba, 1688, or Taobao? Send us your links instantly.</p>
+                            <input type="text" id="quickProduct" placeholder="Product name or link...">
+                            <button class="btn-primary full-width" onclick="quickWhatsAppSend()">Send to WhatsApp (+255 698 039 513)</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SOURCING & ORDER PAGE -->
+        <section id="page-sourcing" class="page">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Product Sourcing & Order Request</h2>
+                    <p>Fill out the form below. Once submitted, it will instantly generate a structured WhatsApp message for our agents.</p>
+                </div>
+                <div class="form-card">
+                    <form id="orderForm" onsubmit="submitOrder(event)">
+                        <div class="form-grid">
+                            <div class="input-group">
+                                <label>Full Name</label>
+                                <input type="text" id="clientName" required placeholder="e.g. Baraka Juma">
+                            </div>
+                            <div class="input-group">
+                                <label>Phone / WhatsApp Number</label>
+                                <input type="text" id="clientPhone" required placeholder="e.g. +255 712 345 678">
+                            </div>
+                            <div class="input-group">
+                                <label>Destination City in Tanzania</label>
+                                <input type="text" id="clientCity" required placeholder="e.g. Dar es Salaam, Arusha, Mwanza">
+                            </div>
+                            <div class="input-group">
+                                <label>Product Category</label>
+                                <select id="productCategory">
+                                    <option>Electronics</option>
+                                    <option>Fashion & Clothing</option>
+                                    <option>Shoes & Bags</option>
+                                    <option>Watches</option>
+                                    <option>Beauty Products</option>
+                                    <option>Home Appliances</option>
+                                    <option>Phone Accessories</option>
+                                    <option>Car Accessories</option>
+                                    <option>Other Products</option>
+                                </select>
+                            </div>
+                            <div class="input-group full-span">
+                                <label>Product Details / Link (Taobao, 1688, Alibaba, or Description)</label>
+                                <textarea id="productDetails" rows="3" required placeholder="Paste product link, color, size, specification..."></textarea>
+                            </div>
+                            <div class="input-group">
+                                <label>Target Quantity</label>
+                                <input type="number" id="productQty" value="1" min="1" required>
+                            </div>
+                            <div class="input-group">
+                                <label>Preferred Shipping Mode</label>
+                                <select id="shippingMode">
+                                    <option value="Air Shipping (5-10 Days)">Air Shipping (5-10 Days - Fast & Secure)</option>
+                                    <option value="Sea Shipping (Bulk Cargo)">Sea Shipping (Bulk Cargo - Cost Effective)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-primary full-width mt-20"><i class="fa-brands fa-whatsapp"></i> Submit Order & Send via WhatsApp</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- SHIPPING CALCULATOR PAGE -->
+        <section id="page-calculator" class="page">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Interactive Shipping Cost Estimator</h2>
+                    <p>Calculate estimated shipping charges from China to Tanzania instantly.</p>
+                </div>
+                <div class="calculator-grid">
+                    <div class="calc-box">
+                        <h3>Select Shipping Type</h3>
+                        <div class="mode-selectors">
+                            <button class="calc-tab active" onclick="setCalcMode('air')">✈️ Air Shipping ($12 / KG)</button>
+                            <button class="calc-tab" onclick="setCalcMode('sea')">🚢 Sea Cargo ($350 / CBM)</button>
+                        </div>
+                        
+                        <div id="airInputs" class="calc-inputs">
+                            <label>Total Weight (KG):</label>
+                            <input type="number" id="airWeight" value="5" min="1" oninput="calculateCost()">
+                        </div>
+
+                        <div id="seaInputs" class="calc-inputs" style="display:none;">
+                            <label>CBM (Cubic Meters - Volume):</label>
+                            <input type="number" id="seaCbm" value="1" min="0.1" step="0.1" oninput="calculateCost()">
+                        </div>
+                    </div>
+
+                    <div class="calc-result-box">
+                        <h3>Estimated Shipping Quote</h3>
+                        <div class="result-display">
+                            <span id="estimatedUsd">$60.00 USD</span>
+                            <span id="estimatedTzs" class="sub-text">Approx. 162,000 TZS</span>
+                        </div>
+                        <p class="calc-note">*Note: Rates are estimates. Final quote depends on item type, customs duty, and volume consolidation.</p>
+                        <button class="btn-primary full-width" onclick="switchPage('sourcing')">Proceed with this Order</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TRACKING PAGE -->
+        <section id="page-tracking" class="page">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Track Your Shipment</h2>
+                    <p>Enter your tracking code (e.g., CMD-1001) to check live progress.</p>
+                </div>
+                <div class="tracking-box">
+                    <div class="tracking-input-group">
+                        <input type="text" id="trackingCodeInput" placeholder="Enter Tracking ID (e.g. CMD-1001)">
+                        <button class="btn-primary" onclick="trackOrder()">Check Status</button>
+                    </div>
+                    <div id="trackingResult" class="tracking-result hidden">
+                        <h4>Status for: <span id="resTrackingId">CMD-1001</span></h4>
+                        <div class="timeline">
+                            <div class="step completed" id="step1">1. Order Received</div>
+                            <div class="step completed" id="step2">2. Sourced & Quoted</div>
+                            <div class="step active" id="step3">3. Purchased in China</div>
+                            <div class="step" id="step4">4. In Transit (Air/Sea)</div>
+                            <div class="step" id="step5">5. Customs Cleared</div>
+                            <div class="step" id="step6">6. Ready for Pickup / Delivery</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICES PAGE -->
+        <section id="page-services" class="page">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Our Comprehensive Services</h2>
+                    <p>End-to-end solutions for buying goods from China safely.</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <h3>Product Sourcing</h3>
+                        <p>We find the best products and verified suppliers matching your exact requirements.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fa-solid fa-handshake"></i>
+                        <h3>Price Negotiation</h3>
+                        <p>We negotiate wholesale factory prices to maximize your profit margins.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fa-solid fa-clipboard-check"></i>
+                        <h3>Quality Inspection</h3>
+                        <p>We inspect products thoroughly before purchase and dispatch to avoid defects.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fa-solid fa-lock"></i>
+                        <h3>Secure Payment</h3>
+                        <p>We make safe payments to Chinese suppliers on your behalf, removing transfer stress.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fa-solid fa-boxes-stacked"></i>
+                        <h3>Consolidation</h3>
+                        <p>Combine multiple items from different suppliers into one shipment to save costs.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fa-solid fa-truck-fast"></i>
+                        <h3>Customs & Delivery</h3>
+                        <p>We handle all documentation, customs clearance, and nationwide delivery in Tanzania.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CATEGORIES CATALOG PAGE -->
+         
+        <!-- Preset Price Catalog with Pictures -->
+        <div class="preset-catalog-grid">
+            <div class="price-card" onclick="selectPresetProduct('Smartwatches (Series 8/9/Ultra clones)', 'Electronics', 15)">
+                <div class="card-img-box">
+                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&auto=format&fit=crop&q=60" alt="Smartwatches">
+                    <span class="price-badge">$8 - $15 USD</span>
+                </div>
+                <div class="card-body">
+                    <h4>Smartwatches</h4>
+                    <p class="tzs-estimate">~ 21,600 - 40,500 TZS</p>
+                    <button class="btn-sm">Select & Order</button>
+                </div>
+            </div>
+
+            <div class="price-card" onclick="selectPresetProduct('Wireless Earbuds / TWS Airpods', 'Electronics', 6)">
+                <div class="card-img-box">
+                    <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=500&auto=format&fit=crop&q=60" alt="Wireless Earbuds">
+                    <span class="price-badge">$3 - $6 USD</span>
+                </div>
+                <div class="card-body">
+                    <h4>Wireless Earbuds</h4>
+                    <p class="tzs-estimate">~ 8,100 - 16,200 TZS</p>
+                    <button class="btn-sm">Select & Order</button>
+                </div>
+            </div>
+
+            <div class="price-card" onclick="selectPresetProduct('Men/Women Designer Sneakers', 'Shoes & Bags', 18)">
+                <div class="card-img-box">
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&auto=format&fit=crop&q=60" alt="Trendy Sneakers">
+                    <span class="price-badge">$10 - $18 USD</span>
+                </div>
+                <div class="card-body">
+                    <h4>Trendy Sneakers</h4>
+                    <p class="tzs-estimate">~ 27,000 - 48,600 TZS</p>
+                    <button class="btn-sm">Select & Order</button>
+                </div>
+            </div>
+
+            <div class="price-card" onclick="selectPresetProduct('Ladies Handbags & Purses', 'Shoes & Bags', 12)">
+                <div class="card-img-box">
+                    <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=500&auto=format&fit=crop&q=60" alt="Ladies Handbags">
+                    <span class="price-badge">$5 - $12 USD</span>
+                </div>
+                <div class="card-body">
+                    <h4>Ladies Handbags</h4>
+                    <p class="tzs-estimate">~ 13,500 - 32,400 TZS</p>
+                    <button class="btn-sm">Select & Order</button>
+                </div>
+            </div>
+
+            <div class="price-card" onclick="selectPresetProduct('Men / Ladies Wholesale T-Shirts', 'Fashion & Clothing', 4)">
+                <div class="card-img-box">
+                    <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500&auto=format&fit=crop&q=60" alt="Wholesale T-Shirts">
+                    <span class="price-badge">$2 - $4 USD</span>
+                </div>
+                <div class="card-body">
+                    <h4>Wholesale T-Shirts</h4>
+                    <p class="tzs-estimate">~ 5,400 - 10,800 TZS</p>
+                    <button class="btn-sm">Select & Order</button>
+                </div>
+            </div>
+
+            <div class="price-card" onclick="selectPresetProduct('Portable Bluetooth Speakers', 'Electronics', 10)">
+                <div class="card-img-box">
+                    <img src="https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=500&auto=format&fit=crop&q=60" alt="Bluetooth Speakers">
+                    <span class="price-badge">$5 - $10 USD</span>
+                </div>
+                <div class="card-body">
+                    <h4>Bluetooth Speakers</h4>
+                    <p class="tzs-estimate">~ 13,500 - 27,000 TZS</p>
+                    <button class="btn-sm">Select & Order</button>
+                </div>
+            </div>
+        </div>
+        <section id="page-catalog" class="page">
+            <div class="container">
+                <div class="section-title">
+                    <h2>We Source All Kinds of Products</h2>
+                    <p>Click on any category to request sourcing assistance instantly.</p>
+                </div>
+                <div class="catalog-grid">
+                    <div class="cat-item" onclick="selectCat('Electronics')">
+                        <i class="fa-solid fa-headphones"></i>
+                        <h4>Electronics</h4>
+                    </div>
+                    <div class="cat-item" onclick="selectCat('Fashion & Clothing')">
+                        <i class="fa-solid fa-shirt"></i>
+                        <h4>Fashion & Clothing</h4>
+                    </div>
+                    <div class="cat-item" onclick="selectCat('Shoes & Bags')">
+                        <i class="fa-solid fa-shoe-prints"></i>
+                        <h4>Shoes & Bags</h4>
+                    </div>
+                    <div class="cat-item" onclick="selectCat('Watches')">
+                        <i class="fa-solid fa-clock"></i>
+                        <h4>Watches</h4>
+                    </div>
+                    <div class="cat-item" onclick="selectCat('Beauty Products')">
+                        <i class="fa-solid fa-spray-can-sparkles"></i>
+                        <h4>Beauty Products</h4>
+                    </div>
+                    <div class="cat-item" onclick="selectCat('Home Appliances')">
+                        <i class="fa-solid fa-blender"></i>
+                        <h4>Home Appliances</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div>
+                <h3>CHODO MARKET EXPRESS</h3>
+                <p>Your reliable China to Tanzania procurement & express shipping partner.</p>
+            </div>
+            <div>
+                <h4>Contact Numbers</h4>
+                <p><i class="fa-solid fa-phone"></i> +255 698 039 513</p>
+                <p><i class="fa-solid fa-phone"></i> +255 748 911 984</p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <p><a href="#" onclick="switchPage('sourcing')">Place an Order</a></p>
+                <p><a href="#" onclick="switchPage('calculator')">Shipping Calculator</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Chodo Market Express. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
